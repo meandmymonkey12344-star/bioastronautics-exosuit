@@ -1,0 +1,36 @@
+# Virtual environments
+.venv/
+venv/
+env/
+.env
+
+# Python cache and build artefacts
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.eggs/
+
+# Test / tooling caches
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# Generated simulation outputs (README figures live in docs/figures/)
+outputs/*
+!outputs/.gitkeep
+
+# Editors and OS files
+.vscode/
+.idea/
+*.swp
+*~
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.log

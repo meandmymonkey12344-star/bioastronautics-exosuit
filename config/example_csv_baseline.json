@@ -1,0 +1,8 @@
+{
+  "_comment": "Demonstrates replacing the synthetic inverse-dynamics baseline with an angle-indexed table (PCHIP-interpolated). The bundled table is itself SYNTHETIC; substitute measured data in the same format.",
+  "description": "Baseline knee torque from data/example_synthetic_knee_torque.csv",
+  "baseline_torque": {"source": "csv", "csv_path": "data/example_synthetic_knee_torque.csv"},
+  "cycle_demo": {"enabled": false},
+  "sensitivity": {"enabled": false},
+  "output": {"directory": "outputs/example_csv_baseline"}
+}

@@ -1,0 +1,23 @@
+# SYNTHETIC example table - NOT measured data.
+# Quasi-static gravity torque m2*g*c2*sin(phi) for a 75 kg subject (default anthropometry), g = 1.62 m/s^2 (Moon), hip fixed at 0 deg.
+# Generated with exosuit_sim.biomechanics.quasi_static_knee_torque. Replace with measured data in the same format.
+knee_flexion_deg,knee_torque_Nm
+0.0,0.000000
+5.0,0.157707
+10.0,0.314213
+15.0,0.468328
+20.0,0.618878
+25.0,0.764719
+30.0,0.904740
+35.0,1.037875
+40.0,1.163111
+45.0,1.279495
+50.0,1.386142
+55.0,1.482239
+60.0,1.567055
+65.0,1.639945
+70.0,1.700354
+75.0,1.747823
+80.0,1.781989
+85.0,1.802594
+90.0,1.809479

@@ -1,0 +1,97 @@
+{
+  "_comment": "Default parameters for exosuit_sim. Keys starting with '_' are documentation and are ignored. ALL suit and actuator values are ILLUSTRATIVE, not measured or flight specifications. Relative paths resolve from the working directory.",
+  "description": "Knee flexion 0->90 deg in 1.0 s, lunar gravity, illustrative hysteretic suit, constrained actuator",
+  "random_seed": 42,
+
+  "environment": {
+    "_units": "gravity in m/s^2 (Earth 9.81, Mars 3.71, Moon 1.62, orbit 0)",
+    "gravity_m_s2": 1.62,
+    "label": "lunar surface"
+  },
+
+  "anthropometry": {
+    "_source": "Segment ratios approximately follow Winter (2009), Biomechanics and Motor Control of Human Movement; verify against the source. Lengths are illustrative.",
+    "body_mass_kg": 75.0,
+    "thigh_length_m": 0.45,
+    "shank_length_m": 0.43,
+    "thigh_mass_fraction": 0.100,
+    "thigh_com_fraction": 0.433,
+    "thigh_radius_of_gyration_fraction": 0.323,
+    "shank_mass_fraction": 0.0465,
+    "shank_com_fraction": 0.433,
+    "shank_radius_of_gyration_fraction": 0.302,
+    "foot_mass_fraction": 0.0145
+  },
+
+  "trajectory": {
+    "_units": "angles in degrees, duration of one phase in s; mode 'flexion' or 'flexion_extension'",
+    "mode": "flexion",
+    "knee_start_deg": 0.0,
+    "knee_end_deg": 90.0,
+    "hip_start_deg": 0.0,
+    "hip_end_deg": 0.0,
+    "duration_s": 1.0,
+    "n_samples": 201
+  },
+
+  "baseline_torque": {
+    "_options": "source 'inverse_dynamics' (synthetic, physics-based) or 'csv' (columns knee_flexion_deg, knee_torque_Nm; PCHIP interpolation)",
+    "source": "inverse_dynamics",
+    "csv_path": null
+  },
+
+  "spacesuit": {
+    "_model": "tau_suit = E(phi)(1 + h s) + tau_f s,  E = k1 phi + k2 phi|phi|  (phi in rad). ILLUSTRATIVE coefficients.",
+    "k_linear_Nm_per_rad": 6.0,
+    "k_quadratic_Nm_per_rad2": 4.0,
+    "friction_Nm": 1.0,
+    "hysteresis_fraction": 0.25,
+    "branch_transition_deg": 3.0,
+    "initial_branch_state": 0.0
+  },
+
+  "actuator": {
+    "_units": "torque N*m, force N, moment arm m, torque rate N*m/s (null disables), efficiencies 0..1. ILLUSTRATIVE limits.",
+    "max_torque_Nm": 20.0,
+    "max_force_N": 600.0,
+    "moment_arm_m": 0.05,
+    "max_torque_rate_Nm_s": 40.0,
+    "efficiency": 0.70,
+    "regeneration_efficiency": 0.0,
+    "bidirectional": true
+  },
+
+  "optimization": {
+    "_weights": "dimensionless after normalisation by torque_scale_Nm (null = peak suit torque); only ratios matter",
+    "w_tracking": 1.0,
+    "lambda_effort": 0.01,
+    "mu_rate": 0.0,
+    "torque_scale_Nm": null,
+    "method": "SLSQP",
+    "max_iter": 1000,
+    "ftol": 1e-12,
+    "enforce_rate_limit": true
+  },
+
+  "cycle_demo": {
+    "enabled": true,
+    "duration_s": 1.0
+  },
+
+  "sensitivity": {
+    "_note": "one-at-a-time sweeps around the defaults; ILLUSTRATIVE ranges",
+    "enabled": true,
+    "suit_stiffness_scale": [0.5, 0.75, 1.0, 1.5, 2.0],
+    "max_torque_Nm": [5.0, 10.0, 15.0, 20.0, 25.0, 30.0, 40.0],
+    "moment_arm_m": [0.02, 0.03, 0.04, 0.05, 0.07, 0.10],
+    "lambda_effort": [0.001, 0.01, 0.1, 0.3, 1.0, 3.0, 10.0],
+    "duration_s": [0.4, 0.6, 0.8, 1.0, 1.5, 2.0, 3.0]
+  },
+
+  "output": {
+    "directory": "outputs",
+    "save_pdf": true,
+    "animation": true,
+    "dpi": 200
+  }
+}

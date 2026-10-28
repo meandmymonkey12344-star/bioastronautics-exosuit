@@ -1,0 +1,6 @@
+# Runtime dependencies (Python >= 3.9; developed and tested on CPython 3.9.6)
+numpy>=1.24
+scipy>=1.10
+matplotlib>=3.7
+# Testing
+pytest>=7.4

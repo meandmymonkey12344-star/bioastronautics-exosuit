@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "exosuit-sim"
+version = "1.0.0"
+description = "Simulation and constrained optimisation of an active knee exoskeleton compensating modelled EVA spacesuit joint resistance"
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.9"
+dependencies = [
+    "numpy>=1.24",
+    "scipy>=1.10",
+    "matplotlib>=3.7",
+]
+keywords = ["bioastronautics", "spacesuit", "EVA", "exoskeleton", "optimization", "biomechanics", "kinematics"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Topic :: Scientific/Engineering :: Physics",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Education",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=7.4"]
+
+[project.scripts]
+exosuit-sim = "exosuit_sim.main:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-ra"
+filterwarnings = [
+    "error",
+    # third-party: matplotlib 3.9 calls pyparsing APIs that pyparsing >= 3.3 deprecates
+    "ignore:'[A-Za-z]+' (argument is )?deprecated:DeprecationWarning",
+]
