@@ -232,7 +232,7 @@ during fast movements. The effort weight is a design dial with a known closed-fo
 Requires Python ≥ 3.9. Tested on 3.9.6.
 
 ```bash
-git clone https://github.com/<your-username>/bioastronautics-exosuit.git
+git clone https://github.com/meandmymonkey12344-star/bioastronautics-exosuit.git
 ```
 
 ```bash
